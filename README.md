@@ -21,7 +21,7 @@ O site `automationexercise.com` apresenta uma estrutura de DOM amigável, com ID
 ## 3. Como Executar 
 1. `npm install`
 2. `npx cypress run` para modo headless.
-3. `npx cypress open` para modo interativo
+3. `npx cypress open` para modo interativo.
 =======
 # TesteAutomatizadoHCXpert-
 >>>>>>> 77af50c55ac1ea9ca995f89d1f4fcadd334b6a2f
