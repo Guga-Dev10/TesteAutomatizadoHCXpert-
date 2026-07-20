@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evidência de Teste de API - Create Account</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 20px auto; padding: 20px; background-color: #f4f7f6; }
+        .container { background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        h1 { color: #d9534f; border-bottom: 2px solid #d9534f; padding-bottom: 10px; }
+        .meta-info { margin-bottom: 20px; font-size: 0.9em; color: #666; }
+        .status-badge { display: inline-block; padding: 5px 12px; border-radius: 20px; font-weight: bold; background-color: #e3fcef; color: #006644; }
+        .code-block { background: #272822; color: #f8f8f2; padding: 15px; border-radius: 5px; overflow-x: auto; font-family: 'Courier New', Courier, monospace; margin-top: 10px; }
+        .label { font-weight: bold; color: #555; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Relatório de Evidência: Create Account (POST)</h1>
+        <div class="meta-info">
+            <p><span class="label">Data/Hora:</span> {{TIMESTAMP}}</p>
+            <p><span class="label">Endpoint:</span> /api/createAccount</p>
+        </div>
+        
+        <h3>Resultado da Requisição</h3>
+        <p><span class="label">Status Code:</span> <span class="status-badge">{{STATUS_CODE}}</span></p>
+        
+        <h3>Corpo da Resposta (JSON)</h3>
+        <pre class="code-block">{{RESPONSE_BODY}}</pre>
+
+        <h3>Validação de Regra de Negócio</h3>
+        <p><span class="label">Mensagem:</span> {{RESPONSE_MESSAGE}}</p>
+    </div>
+</body>
+</html>
