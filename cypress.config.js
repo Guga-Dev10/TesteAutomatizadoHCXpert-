@@ -8,7 +8,6 @@ const createEsbuildPlugin = esbuildPluginModule.createEsbuildPlugin || esbuildPl
 module.exports = defineConfig({
   e2e: {
     async setupNodeEvents(on, config) {
-      // Inicializa o plugin do Cucumber
       await addCucumberPreprocessorPlugin(on, config);
 
       on(
@@ -20,12 +19,10 @@ module.exports = defineConfig({
 
       return config;
     },
-    // Caminho onde estão os seus arquivos .feature
+    // ADICIONE ESTA LINHA COM A URL ALVO DO EDITAL:
+    baseUrl: "https://www.automationexercise.com",
+    
     specPattern: "cypress/e2e/**/*.feature",
-    
-    // ADICIONE ESTA LINHA: Aponta exatamente onde estão os passos em JS/TS
-    stepDefinitions: "cypress/e2e/step_definitions/**/*.js",
-    
     supportFile: "cypress/support/e2e.js",
   },
 });
