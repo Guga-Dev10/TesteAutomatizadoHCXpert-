@@ -9,10 +9,10 @@ Funcionalidade: Pesquisa de Produtos
 
   Cenario: Pesquisa bem-sucedida de um produto existente
     Quando eu pesquiso pelo produto "Blue Top"
-    Entao devo ver a secao "SEARCHED PRODUCTS"
+    Entao devo ver a secao "Searched Products"
     E o produto "Blue Top" deve estar visivel na lista de resultados
 
   Cenario: Pesquisa de produto inexistente
     Quando eu pesquiso pelo produto "ProdutoInexistente123"
-    Entao devo ver a secao "SEARCHED PRODUCTS"
+    Entao devo ver a secao "Searched Products"
     E nenhum produto deve ser exibido na lista de resultados

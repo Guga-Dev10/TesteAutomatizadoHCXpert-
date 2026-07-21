@@ -27,7 +27,7 @@ When("eu envio um POST para o endpoint {string} sem o parametro {string}", (endp
   }).as('apiResponse');
 });
 
-Then("a resposta JSON deve conter a mensagem {string}", (expectedMessage) => {
+Then("resposta JSON deve conter a mensagem {string}", (expectedMessage) => {
   cy.get('@apiResponse').its('body.message').should('eq', expectedMessage);
 });
 

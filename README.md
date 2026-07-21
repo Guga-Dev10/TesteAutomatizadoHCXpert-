@@ -1,56 +1,56 @@
-# Desafio Técnico HCXpert 2026 - QA/SDET Sênior
+# Desafio Tecnico HCXpert 2026 - QA/SDET Senior
 
-Este repositório contém o framework de automação desenvolvido para o site [Automation Exercise](https://automationexercise.com) e validações de API (Trello e Automation Exercise), seguindo rigorosamente os padrões de Engenharia de Qualidade Sênior.
+Este repositorio contem o framework de automacao desenvolvido para o site [Automation Exercise](https://automationexercise.com) e validacoes de API (Trello e Automation Exercise), seguindo rigorosamente os padroes de Engenharia de Qualidade Senior.
 
-## 1. Parecer Crítico de Testabilidade
+## 1. Parecer Critico de Testabilidade
 
-O ecossistema do **Automation Exercise** apresenta uma testabilidade mista. Do ponto de vista de automação Web, o site é amigável devido ao uso extensivo de atributos `data-qa`, o que garante seletores resilientes a mudanças no layout. Contudo, o principal desafio de negócio é a **gestão de estado da massa de dados**: o sistema impede a duplicidade de e-mails, exigindo que a automação utilize estratégias de limpeza ou geração dinâmica de dados (resolvido aqui via fixtures e isolamento de cenários).
+O ecossistema do **Automation Exercise** apresenta uma testabilidade mista. Do ponto de vista de automacao Web, o site e amigavel devido ao uso extensivo de atributos `data-qa`, o que garante seletores resilientes a mudancas no layout. Contudo, o principal desafio de negocio e a **gestao de estado da massa de dados**: o sistema impede a duplicidade de e-mails, exigindo que a automacao utilize estrategias de limpeza ou geracao dinamica de dados (resolvido aqui via fixtures e isolamento de cenarios).
 
-Quanto às APIs, observou-se que o site não segue estritamente o padrão RESTful para códigos de status em erros de requisição (retornando `200 OK` com mensagens de erro no body), o que exige asserções de negócio mais profundas do que a simples validação de `status code`.
+Quanto as APIs, observou-se que o site nao segue estritamente o padrao RESTful para codigos de status em erros de requisicao (retornando `200 OK` com mensagens de erro no body), o que exige assercoes de negocio mais profundas do que a simples validacao de `status code`.
 
 ## 2. Matriz de Auditoria de Requisitos
 
-| Requisito | Status | Comentário / Evidência |
+| Requisito | Status | Comentario / Evidencia |
 | :--- | :---: | :--- |
 | **Framework Cypress (JS/TS)** | **Atendido** | Desenvolvido em JavaScript com Cypress v15 e esbuild. |
-| **Gherkin Declarativo** | **Atendido** | Cenários focados em comportamento, evitando termos técnicos. |
-| **Padrão POM (Strict)** | **Atendido** | Isolamento total de elementos em `cypress/support/page_objects/`. |
-| **Estrutura de Pastas** | **Atendido** | Árvore de diretórios 100% conforme edital. |
-| **Cenários Positivos/Negativos** | **Atendido** | Cobertura completa de Login, Busca e APIs. |
-| **Proibição de describe/it** | **Atendido** | Integração via Cucumber sem o uso de Mocha/xUnit nos steps. |
+| **Gherkin Declarativo** | **Atendido** | Cenarios focados em comportamento, evitando termos tecnicos. |
+| **Padrao POM (Strict)** | **Atendido** | Isolamento total de elementos em `cypress/support/page_objects/`. |
+| **Estrutura de Pastas** | **Atendido** | Arvore de diretorios 100% conforme edital. |
+| **Cenarios Positivos/Negativos** | **Atendido** | Cobertura completa de Login, Busca e APIs. |
+| **Proibicao de describe/it** | **Atendido** | Integracao via Cucumber sem o uso de Mocha/xUnit nos steps. |
 | **Uso de Fixtures** | **Atendido** | Massa de dados centralizada em `cypress/fixtures/users.json`. |
-| **Teste API Trello (GET)** | **Atendido** | Extração do campo `data.list.name` com validação de status. |
-| **Teste API AE (POST)** | **Atendido** | Validação de regra de negócio (parâmetros ausentes). |
-| **Scripts de Apoio (/scripts)** | **Atendido** | Scripts de evidências e relatórios operacionais. |
+| **Teste API Trello (GET)** | **Atendido** | Extracao do campo `data.list.name` com validacao de status. |
+| **Teste API AE (POST)** | **Atendido** | Validacao de regra de negocio (parametros ausentes). |
+| **Scripts de Apoio (/scripts)** | **Atendido** | Scripts de evidencias e relatorios operacionais. |
 
 ## 3. Arquitetura do Projeto
 
 ```text
 ├── cypress/
 │   ├── e2e/
-│   │   ├── features/          # Especificações BDD (.feature)
-│   │   └── step_definitions/  # Implementação dos passos
+│   │   ├── features/          # Especificacoes BDD (.feature)
+│   │   └── step_definitions/  # Implementacao dos passos
 │   ├── fixtures/              # Massa de dados (JSON)
 │   ├── support/
-│   │   └── page_objects/      # Mapeamento de elementos e ações (POM)
+│   │   └── page_objects/      # Mapeamento de elementos e acoes (POM)
 │   └── evidencias/            # Local para logs e screenshots
-├── scripts/                   # Scripts utilitários (PowerShell/Node)
-├── cypress.config.js          # Configuração do Cypress e Cucumber
-└── package.json               # Dependências do projeto
+├── scripts/                   # Scripts utilitarios (PowerShell/Node)
+├── cypress.config.js          # Configuracao do Cypress e Cucumber
+└── package.json               # Dependencias do projeto
 ```
 
 ## 4. Como Executar
 
-### Pré-requisitos
+### Pre-requisitos
 - Node.js (v18+)
 - Cypress v15+
 
-### Instalação
+### Instalacao
 ```bash
 npm install
 ```
 
-### Execução dos Testes
+### Execucao dos Testes
 - **Modo Headless (Terminal):**
   ```bash
   npx cypress run
@@ -60,7 +60,7 @@ npm install
   npx cypress open
   ```
 
-## 5. Scripts Utilitários
+## 5. Scripts Utilitarios
 Localizados na pasta `/scripts`:
-- `capture-chrome-window.ps1`: Captura de evidências em ambiente Windows.
-- `generate-report.mjs`: Consolidação de resultados pós-execução.
+- `capture-chrome-window.ps1`: Captura de evidencias em ambiente Windows.
+- `generate-report.mjs`: Consolidacao de resultados pos-execucao.
