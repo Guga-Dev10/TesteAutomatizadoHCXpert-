@@ -1,7 +1,7 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 import loginPage from "../../support/page_objects/loginPage";
 
-Given("que eu esteja na página de login", () => {
+Given("que eu esteja na pagina de login", () => {
   loginPage.visit();
 });
 
@@ -15,7 +15,7 @@ When("eu tento logar com o email {string} e senha {string}", (email, password) =
   loginPage.login(email, password);
 });
 
-Then("devo ver o nome do usuário na barra de navegação", () => {
+Then("devo ver o nome do usuario na barra de navegacao", () => {
   cy.get('li a').contains('Logged in as').should('be.visible');
 });
 

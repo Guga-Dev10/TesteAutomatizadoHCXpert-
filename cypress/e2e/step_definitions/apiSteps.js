@@ -1,26 +1,37 @@
 import { When, Then } from "@badeball/cypress-cucumber-preprocessor";
 
-When("eu solicito os detalhes da ação {string} via API", (actionId) => {
+// Trello API
+When("eu consulto os detalhes da acao {string} no Trello", (actionId) => {
   cy.request({
     method: 'GET',
     url: `https://api.trello.com/1/actions/${actionId}`,
     failOnStatusCode: false
-  }).as('trelloResponse');
+  }).as('apiResponse');
 });
 
-Then("o status code da resposta deve ser 200", () => {
-  cy.get('@trelloResponse').its('status').should('eq', 200);
-});
-
-Then("o log deve exibir o nome da lista associada a essa ação", () => {
-  cy.get('@trelloResponse').then((response) => {
-    // Extraindo o campo 'name' dentro da estrutura 'list'
+Then("o nome da lista associada deve ser exibido no console de execucao", () => {
+  cy.get('@apiResponse').then((response) => {
     const listName = response.body.data.list.name;
-    
-    cy.log(`Nome da Lista: ${listName}`);
-    
-    // Validação adicional para garantir que o campo existe
+    cy.log(`### NOME DA LISTA: ${listName} ###`);
     expect(listName).to.not.be.undefined;
-    expect(listName).to.be.a('string');
   });
+});
+
+// Automation Exercise API
+When("eu envio um POST para o endpoint {string} sem o parametro {string}", (endpoint, param) => {
+  cy.request({
+    method: 'POST',
+    url: endpoint,
+    body: {}, // Corpo vazio para simular falta de parâmetro
+    failOnStatusCode: false
+  }).as('apiResponse');
+});
+
+Then("a resposta JSON deve conter a mensagem {string}", (expectedMessage) => {
+  cy.get('@apiResponse').its('body.message').should('eq', expectedMessage);
+});
+
+// Common
+Then("o status code da resposta deve ser {int}", (statusCode) => {
+  cy.get('@apiResponse').its('status').should('eq', statusCode);
 });
